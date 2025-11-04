@@ -1,0 +1,518 @@
+/* ====================================================
+   DASHBOARD RESPONSIVE STYLES - SYMBIOT FINANCIAL MANAGER
+   Archivo: public/css/dashboard-responsive.css
+   ACTUALIZADO para ancho completo como gastos.html
+   ==================================================== */
+
+/* ========================================= */
+/* CONTAINER Y ANCHO COMPLETO */
+/* ========================================= */
+
+/* Remover padding del body para ancho completo */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container fluid ocupa toda la pantalla */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+}
+
+/* Navbar sin fixed-top para layout normal */
+.navbar {
+    position: relative !important; 
+    margin-bottom: 0;
+}
+
+/* Main content sin padding top extra */
+.main-content {
+    padding: 2rem 0;
+    margin-top: 0;
+}
+
+/* ========================================= */
+/* STATISTICS CARDS RESPONSIVE */
+/* ========================================= */
+
+/* Asegurar que las cards sean uniformes */
+.row .col-sm-6.col-xl-3 {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+@media (max-width: 1199.98px) {
+    .row .col-sm-6.col-xl-3 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .row .col-sm-6.col-xl-3 {
+        width: 100%;
+    }
+}
+
+/* ========================================= */
+/* MOBILE FIRST - EXTRA SMALL DEVICES */
+/* ========================================= */
+@media (max-width: 575.98px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .main-content {
+        padding: 1rem 0;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-brand img {
+        height: 25px !important;
+    }
+    
+    .welcome-banner {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .welcome-banner h4 {
+        font-size: 1.2rem;
+    }
+    
+    .stat-card .card-body {
+        padding: 1rem 0.75rem;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+    }
+    
+    .stat-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .stat-card h6 {
+        font-size: 0.9rem;
+    }
+    
+    /* Botones más pequeños en móvil */
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.5rem;
+    }
+    
+    /* Tabla responsive en móvil */
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    /* Modales en móvil */
+    .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+}
+
+/* ========================================= */
+/* SMALL DEVICES - TABLETS */
+/* ========================================= */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container-fluid {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .main-content {
+        padding: 1.5rem 0;
+    }
+    
+    .welcome-banner {
+        padding: 1.75rem;
+    }
+    
+    .stat-icon {
+        font-size: 2.2rem;
+    }
+    
+    /* Grid de maestros en tablet */
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Filtros en dos columnas */
+    .students-filters .col-md-3 {
+        width: 50%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ========================================= */
+/* MEDIUM DEVICES - SMALL LAPTOPS */
+/* ========================================= */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .main-content {
+        padding: 2rem 0;
+    }
+    
+    /* Statistics cards en 2 columnas */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Grid de maestros responsivo */
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 1rem !important;
+    }
+    
+    /* Company selector responsive */
+    .company-selector-widget .row .col-md-4 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ========================================= */
+/* LARGE DEVICES - LAPTOPS */
+/* ========================================= */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Statistics cards en 4 columnas */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Grid de maestros en 3 columnas */
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        max-width: none;
+    }
+    
+    .stat-icon {
+        font-size: 2.3rem;
+    }
+}
+
+/* ========================================= */
+/* EXTRA LARGE DEVICES - DESKTOPS */
+/* ========================================= */
+@media (min-width: 1200px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+        /* NO max-width para ancho completo */
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    
+    .stat-icon {
+        font-size: 2.5rem;
+    }
+    
+    .card-header h6 {
+        font-size: 1.1rem;
+    }
+    
+    /* Grid de maestros en 4 columnas */
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+/* ========================================= */
+/* XXL DEVICES - LARGE DESKTOPS */
+/* ========================================= */
+@media (min-width: 1400px) {
+    .container-fluid {
+        /* Mantener ancho completo, sin max-width */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    
+    .stat-icon {
+        font-size: 3rem;
+    }
+    
+    .card-header h6 {
+        font-size: 1.1rem;
+    }
+    
+    /* Grid de maestros puede ser 5 columnas en pantallas muy grandes */
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    }
+}
+
+/* ========================================= */
+/* RESPONSIVE PARA ESTRUCTURA SEMÁNTICA DE MAESTROS */
+/* ========================================= */
+
+/* Ajustes para teacher-stats responsivos */
+@media (max-width: 768px) {
+    .teacher-stats {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 0.5rem;
+    }
+    
+    .stat-item {
+        flex: 1;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-item .stat-number {
+        font-size: 1.1rem;
+    }
+    
+    .teacher-icon {
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+    }
+    
+    .teacher-name {
+        font-size: 0.95rem;
+    }
+    
+    .teacher-specialty {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .teacher-stats {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 0.75rem 0;
+    }
+    
+    .stat-item {
+        margin-bottom: 0;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 6px;
+    }
+    
+    .teacher-header {
+        margin-bottom: 0.75rem;
+    }
+    
+    .teacher-income {
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Mejoras específicas para pantallas grandes */
+@media (min-width: 1400px) {
+    .teacher-card {
+        min-height: 160px;
+    }
+    
+    .teacher-icon {
+        font-size: 1.75rem;
+    }
+    
+    .teacher-name {
+        font-size: 1.1rem;
+    }
+    
+    .stat-item .stat-number {
+        font-size: 1.4rem;
+    }
+}
+
+/* ========================================= */
+/* ORIENTACIÓN LANDSCAPE EN MÓVILES */
+/* ========================================= */
+@media (max-width: 991.98px) and (orientation: landscape) {
+    .navbar {
+        padding: 0.25rem 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-brand img {
+        height: 25px !important;
+    }
+    
+    .main-content {
+        padding: 1rem 0;
+    }
+    
+    .stat-card {
+        margin-bottom: 0.75rem;
+    }
+    
+    .welcome-banner {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Modales en landscape móvil */
+    .modal-dialog {
+        margin: 0.25rem;
+        max-width: 95%;
+    }
+    
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* ========================================= */
+/* FIXES PARA NAVEGADORES ESPECÍFICOS */
+/* ========================================= */
+
+/* Safari backdrop-filter fix */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+    .navbar,
+    .card,
+    .modal-content {
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+/* Firefox scroll personalizado */
+@-moz-document url-prefix() {
+    .table-responsive {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+}
+
+/* Webkit scroll personalizado */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================= */
+/* PRINT STYLES */
+/* ========================================= */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .navbar,
+    .btn,
+    .modal,
+    .loading-spinner {
+        display: none !important;
+    }
+    
+    .card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .table-dark {
+        color: black !important;
+        background: white !important;
+    }
+    
+    .table-dark th,
+    .table-dark td {
+        border-color: #ccc !important;
+        color: black !important;
+    }
+    
+    .text-muted {
+        color: #666 !important;
+    }
+    
+    .container-fluid {
+        padding: 0;
+        max-width: 100%;
+    }
+}
+
+/* ========================================= */
+/* ACCESIBILIDAD Y MOTION */
+/* ========================================= */
+
+/* Reducir animaciones para usuarios con preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .stat-card,
+    .teacher-item,
+    .class-item,
+    .transaction-item {
+        transition: none !important;
+    }
+    
+    .stat-card:hover {
+        transform: none !important;
+    }
+    
+    .loading-spinner i {
+        animation: none !important;
+    }
+}
+
+/* Alto contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    .btn {
+        border-width: 2px !important;
+    }
+    
+    .text-muted {
+        color: #ffffff !important;
+    }
+}

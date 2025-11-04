@@ -1,0 +1,390 @@
+/* ====================================================
+   DASHBOARD MAIN STYLES - SYMBIOT FINANCIAL MANAGER
+   Archivo: public/css/dashboard-main.css
+   ACTUALIZADO para homologar con gastos.html e ingresos.html
+   ==================================================== */
+
+body {
+    background: linear-gradient(135deg, #000 0%, #191C24 50%, #000 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+/* ========================================= */
+/* FIX CRÍTICO PARA DROPDOWN MENU Z-INDEX */
+/* ========================================= */
+.navbar {
+    z-index: 1030 !important;
+    position: relative !important;  /* Asegurar posición correcta */
+    background: rgba(25, 28, 36, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar .dropdown-menu,
+.dropdown-menu {
+    z-index: 9999 !important;
+    position: absolute !important;
+    background: rgba(25, 28, 36, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.dropdown-menu.show {
+    z-index: 9999 !important;
+    display: block !important;
+}
+
+.navbar-brand {
+    color: #EB1616 !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #EB1616 !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: #dc3545 !important;
+    font-weight: bold;
+}
+
+.dropdown-item {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #EB1616;
+}
+
+/* ========================================= */
+/* MAIN CONTENT */
+/* ========================================= */
+.main-content {
+    padding: 2rem 0;
+}
+
+/* ========================================= */
+/* WELCOME BANNER */
+/* ========================================= */
+.welcome-banner {
+    z-index: 1 !important;
+    position: relative !important;  /* Asegurar posición baja */
+    background: linear-gradient(135deg, rgba(13, 202, 240, 0.15), rgba(13, 202, 240, 0.1));
+    border: 1px solid rgba(13, 202, 240, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.welcome-banner h4 {
+    color: #0DCAF0;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-banner p {
+    color: #E4E6EA;
+    margin-bottom: 0;
+}
+
+/* ========================================= */
+/* CARD STYLES */
+/* ========================================= */
+.card {
+    background: rgba(25, 28, 36, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+/* 🎨 MEJORA: Textos más claros para mejor visibilidad */
+.stat-card .card-title {
+    color: #B0B3B8 !important; /* Gris más claro */
+    font-weight: 500;
+}
+
+.stat-card h4 {
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================= */
+/* TEXT STYLES */
+/* ========================================= */
+.text-muted, .small, .stat-label {
+    color: #E4E6EA !important; /* Gris mucho más claro */
+}
+
+/* Form labels */
+.form-label {
+    color: #E4E6EA !important;
+    font-weight: 500;
+}
+
+/* ========================================= */
+/* STATISTICS SPECIFIC STYLES */
+/* ========================================= */
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #D1D5DB !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-item {
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.metric-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================= */
+/* LOADING STATES */
+/* ========================================= */
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+}
+
+.loading-spinner i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-state {
+    text-align: center;
+    padding: 3rem;
+    color: #C8CCD0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #9CA3AF;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* ========================================= */
+/* BADGE STYLES */
+/* ========================================= */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* BUTTON STYLES */
+/* ========================================= */
+.btn-outline-primary {
+    border-color: rgba(13, 202, 240, 0.5);
+    color: #0DCAF0;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(13, 202, 240, 0.1);
+    border-color: #0DCAF0;
+    color: #0DCAF0;
+}
+
+.btn-outline-info {
+    border-color: rgba(23, 162, 184, 0.5);
+    color: #17A2B8;
+}
+
+.btn-outline-info:hover {
+    background-color: rgba(23, 162, 184, 0.1);
+    border-color: #17A2B8;
+    color: #17A2B8;
+}
+
+.btn-outline-warning {
+    border-color: rgba(255, 193, 7, 0.5);
+    color: #FFC107;
+}
+
+.btn-outline-warning:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: #FFC107;
+    color: #FFC107;
+}
+
+/* ========================================= */
+/* TABLE STYLES */
+/* ========================================= */
+.table-dark {
+    --bs-table-bg: rgba(25, 28, 36, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-dark th,
+.table-dark td {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #E4E6EA;
+}
+
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ========================================= */
+/* FORM STYLES */
+/* ========================================= */
+.form-control,
+.form-select {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #0DCAF0;
+    box-shadow: 0 0 0 0.2rem rgba(13, 202, 240, 0.25);
+    color: white;
+}
+
+.form-control::placeholder {
+    color: #9CA3AF;
+    opacity: 1;
+}
+
+.form-select option {
+    background-color: #191C24;
+    color: white;
+}
+
+/* ========================================= */
+/* MODAL STYLES */
+/* ========================================= */
+.modal-content {
+    background: rgba(25, 28, 36, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================= */
+/* ALERT STYLES */
+/* ========================================= */
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.alert-info {
+    background: rgba(13, 202, 240, 0.1);
+    border: 1px solid rgba(13, 202, 240, 0.2);
+    color: #0DCAF0;
+}
+
+.alert-success {
+    background: rgba(25, 135, 84, 0.1);
+    border: 1px solid rgba(25, 135, 84, 0.2);
+    color: #198754;
+}
+
+.alert-warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    color: #FFC107;
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    color: #DC3545;
+}
+
+/* ========================================= */
+/* PAGINATION STYLES */
+/* ========================================= */
+.pagination {
+    --bs-pagination-bg: rgba(25, 28, 36, 0.8);
+    --bs-pagination-border-color: rgba(255, 255, 255, 0.1);
+    --bs-pagination-color: #E4E6EA;
+    --bs-pagination-hover-bg: rgba(255, 255, 255, 0.1);
+    --bs-pagination-hover-border-color: rgba(255, 255, 255, 0.2);
+    --bs-pagination-active-bg: #0DCAF0;
+    --bs-pagination-active-border-color: #0DCAF0;
+}
+
+/* ========================================= */
+/* UTILITY CLASSES */
+/* ========================================= */
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-light {
+    color: #f8f9fa !important;
+}

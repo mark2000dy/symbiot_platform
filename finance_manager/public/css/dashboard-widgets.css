@@ -1,0 +1,757 @@
+/* ====================================================
+   DASHBOARD WIDGETS STYLES - SYMBIOT FINANCIAL MANAGER
+   Archivo: public/css/dashboard-widgets.css
+   ACTUALIZADO para corregir selector de empresa y widgets
+   ==================================================== */
+
+/* 🎯 MEJORAR CONTRASTE DE TEXTOS GRISES */
+.text-muted {
+    color: #C8CCD0 !important; /* Más claro que el original Bootstrap */
+}
+
+/* 🎯 MEJORAR TEXTO SECUNDARIO */
+small.text-muted, 
+.small.text-muted {
+    color: #D1D5DB !important;
+    font-weight: 500 !important;
+}
+
+/* 🎯 MEJORAR CONTRASTE DE ELEMENTOS ESPECÍFICOS */
+.card-body small {
+    color: #C8CCD0 !important;
+    font-weight: 500 !important;
+}
+
+/* 🎯 SELECTOR DE EMPRESA - LABELS MEJORADOS */
+.stat-label {
+    color: #D1D5DB !important;
+    font-weight: 600 !important;
+    font-size: 0.8em !important;
+}
+
+/* ========================================= */
+/* 🔧 SELECTOR DE EMPRESA - CORREGIDO */
+/* ========================================= */
+.company-selector-widget {
+    background: rgba(25, 28, 36, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.company-selector-widget .form-select {
+    background: rgba(25, 28, 36, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.company-selector-widget .form-select:focus {
+    background: rgba(25, 28, 36, 0.9) !important;
+    border-color: #0DCAF0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(13, 202, 240, 0.25) !important;
+    color: white !important;
+}
+
+.company-selector-widget .form-select option {
+    background-color: #191C24 !important;
+    color: white !important;
+}
+
+/* 🎯 STATS NUMBERS EN SELECTOR DE EMPRESA */
+.company-selector-widget .stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.company-selector-widget .stat-number.text-success {
+    color: #28a745 !important;
+}
+
+.company-selector-widget .stat-number.text-danger {
+    color: #dc3545 !important;
+}
+
+.company-selector-widget .stat-number.text-warning {
+    color: #ffc107 !important;
+}
+
+/* ========================================= */
+/* WIDGET MAESTROS - ESPECIALIDADES MÁS VISIBLES */
+/* ========================================= */
+
+.teacher-card {
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 140px;
+    margin-bottom: 0 !important;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.teacher-card:hover {
+    background: rgba(255,255,255,0.15) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ========================================= */
+/* WIDGET ALERTAS DE PAGOS */
+/* ========================================= */
+.payment-alert-card {
+    background: rgba(25, 28, 36, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.payment-alert-header {
+    background: rgba(235, 22, 22, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px 12px 0 0;
+}
+
+.payment-section {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.payment-section.upcoming {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.payment-section.overdue {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* 🎯 ALERTAS DE PAGOS - TEXTO MÁS VISIBLE */
+.alert small {
+    color: #E5E7EB !important;
+    font-weight: 500 !important;
+}
+
+/* ========================================= */
+/* WIDGET MAESTROS - ESTRUCTURA SEMÁNTICA ORIGINAL */
+/* ========================================= */
+
+.teacher-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.teacher-icon {
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+    margin-right: 0.75rem;
+    width: 2rem;
+    text-align: center;
+}
+
+.teacher-info {
+    flex-grow: 1;
+}
+
+.teacher-name {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.teacher-specialty {
+    color: #C8CCD0 !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem;
+}
+
+.teacher-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-item .stat-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-item.active .stat-number {
+    color: #4ac711 !important;
+}
+
+.stat-item.inactive .stat-number {
+    color: #dc1313 !important;
+}
+
+.stat-item .stat-label {
+    color: #C8CCD0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.teacher-income {
+    text-align: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.teacher-income small {
+    color: #9CA3AF;
+    font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .teacher-stats {
+        margin: 0.75rem 0;
+    }
+    
+    .stat-item .stat-number {
+        font-size: 1.1rem;
+    }
+    
+    .teacher-icon {
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+    }
+}
+
+/* ========================================= */
+/* WIDGET GESTIÓN DE ALUMNOS */
+/* ========================================= */
+.students-widget {
+    background: rgba(25, 28, 36, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.students-filters {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.students-table-container {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.student-status-badge.active {
+    background-color: rgba(25, 135, 84, 0.2);
+    color: #a3cfbb;
+    border: 1px solid rgba(25, 135, 84, 0.3);
+}
+
+.student-status-badge.inactive {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #f1aeb5;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.student-payment-alert.current {
+    color: #a3cfbb;
+}
+
+.student-payment-alert.upcoming {
+    color: #ffecb5;
+}
+
+.student-payment-alert.overdue {
+    color: #f1aeb5;
+}
+
+.filter-summary {
+    background: rgba(13, 202, 240, 0.1);
+    border: 1px solid rgba(13, 202, 240, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+/* 🎯 TABLA DE ALUMNOS - TEXTO SECUNDARIO */
+.table small {
+    color: #D1D5DB !important;
+    font-weight: 500 !important;
+}
+
+/* ========================================= */
+/* WIDGET ESTADÍSTICAS */
+/* ========================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ========================================= */
+/* WIDGET TRANSACCIONES RECIENTES */
+/* ========================================= */
+.transactions-widget {
+    background: rgba(25, 28, 36, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.transaction-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease;
+}
+
+.transaction-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-amount.income {
+    color: #a3cfbb;
+}
+
+.transaction-amount.expense {
+    color: #f1aeb5;
+}
+
+/* ========================================= */
+/* 🎯 BADGES Y ELEMENTOS INFORMATIVOS */
+/* ========================================= */
+.badge small {
+    color: #F3F4F6 !important;
+}
+
+/* 🎯 DISTRIBUCIÓN DE CLASES - MEJORES CONTRASTES */
+.class-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s ease;
+}
+
+.class-item:hover {
+    background: rgba(255,255,255,0.08) !important;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.class-item small {
+    color: #C8CCD0 !important;
+    font-weight: 500 !important;
+}
+
+.class-stats small {
+    color: #D1D5DB !important;
+    font-weight: 500 !important;
+}
+
+/* ========================================= */
+/* 🎯 ELEMENTOS DE FORMULARIO - PLACEHOLDERS MÁS VISIBLES */
+/* ========================================= */
+.form-control::placeholder {
+    color: #9CA3AF !important;
+    opacity: 1 !important;
+}
+
+/* 🎯 TEXTO DE AYUDA Y HINTS */
+.form-text {
+    color: #C8CCD0 !important;
+}
+
+/* 🎯 ICONOS CON MEJOR VISIBILIDAD */
+.fas.text-muted,
+.far.text-muted {
+    color: #C8CCD0 !important;
+}
+
+/* 🎯 LOADING STATES CON MEJOR CONTRASTE */
+.loading-spinner p {
+    color: #E5E7EB !important;
+    font-weight: 500 !important;
+}
+
+/* 🎯 ESTADOS VACÍOS MÁS VISIBLES */
+.empty-state small {
+    color: #D1D5DB !important;
+    font-weight: 500 !important;
+}
+
+/* 🎯 HOVER EFFECTS MEJORADOS */
+.teacher-item:hover,
+.class-item:hover {
+    background: rgba(255,255,255,0.08) !important;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+/* 🎯 BORDES MÁS SUAVES */
+.card {
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* ========================================= */
+/* ESTADOS DE CARGA Y VACÍOS */
+/* ========================================= */
+.loading-state {
+    text-align: center;
+    padding: 3rem;
+    color: #C8CCD0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #9CA3AF;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* ========================================= */
+/* PAGINACIÓN PERSONALIZADA */
+/* ========================================= */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.pagination-info {
+    color: #C8CCD0;
+    font-size: 0.9rem;
+}
+
+/* ========================================= */
+/* STUDENT STATS ESPECÍFICOS */
+/* ========================================= */
+.student-stat {
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.student-stat:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================= */
+/* RESPONSIVE HELPERS */
+/* ========================================= */
+.mobile-hidden {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .students-filters {
+        padding: 0.75rem;
+    }
+    
+    .students-filters .row {
+        margin: 0;
+    }
+    
+    .students-filters .col-md-3 {
+        margin-bottom: 1rem;
+    }
+    
+    .teachers-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .teacher-card {
+        min-height: auto !important;
+    }
+}
+
+/* ========================================= */
+/* CORRECCIÓN CRÍTICA: TEXTOS VISIBLES */
+/* ========================================= */
+
+/* Forzar texto blanco en elementos críticos */
+.payment-section h6,
+.payment-section .text-light,
+.alert-item strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* Texto secundario más visible */
+.alert-item small,
+.payment-section small {
+    color: #E5E7EB !important;
+    font-weight: 500 !important;
+}
+
+/* Teacher cards */
+.teacher-card .text-light {
+    color: #FFFFFF !important;
+}
+
+.teacher-card small {
+    color: #D1D5DB !important;
+}
+
+/* Students widgets */
+#totalStudents,
+#activeStudents,
+#inactiveStudents {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+/* Company stats */
+#companyBalance,
+#companyTransactions,
+#companyStudents {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+/* Badges más visibles */
+.badge {
+    font-weight: 600 !important;
+}
+
+.badge.bg-warning {
+    color: #000 !important;
+}
+
+.badge.bg-danger {
+    color: #FFF !important;
+}
+
+/* ========================================= */
+/* WIDGET MAESTROS - GRID LAYOUT ORIGINAL */
+/* ========================================= */
+.teachers-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 15px !important;
+    padding: 5px !important;
+}
+
+.teacher-card {
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 140px;
+    margin-bottom: 0 !important;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.teacher-card:hover {
+    background: rgba(255,255,255,0.15) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.teacher-info small,
+.maestro-especialidad {
+    color: #C8CCD0 !important;
+    font-weight: 500 !important;
+}
+
+/* ========================================= */
+/* WIDGET ALUMNOS - INDICADORES ACTIVOS */
+/* ========================================= */
+.student-stat.active-filter,
+.badge.active-filter {
+    transition: all 0.3s ease !important;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.5) !important;
+}
+
+.student-stat {
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.student-stat:hover {
+    background: rgba(255,255,255,0.1) !important;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   HOMOLOGACIÓN DE WIDGETS - ESTILOS ADICIONALES
+   ============================================ */
+
+/* Widget Alumnos Inscritos - Números grandes */
+#activeStudents,
+#inactiveStudents {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Labels de alumnos */
+.student-stat small {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Badge total alumnos */
+#totalStudents {
+    font-size: 1.1rem !important;
+    padding: 0.5rem 0.75rem !important;
+    font-weight: 600;
+}
+
+/* Distribución por clase */
+#classDistribution .class-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+#classDistribution .class-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* Iconos de instrumentos */
+.card-body .fa-guitar,
+.card-body .fa-drum,
+.card-body .fa-music,
+.card-body .fa-microphone {
+    font-size: 1.5rem;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.card-body .fa-guitar:hover,
+.card-body .fa-drum:hover,
+.card-body .fa-music:hover,
+.card-body .fa-microphone:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Widget Maestros - Homologado */
+.teacher-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    border-left: 4px solid #007bff !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.teacher-card h6 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.teacher-card .text-info {
+    font-weight: 600;
+}
+
+.teacher-card .text-white {
+    font-weight: 600;
+}
+
+.teacher-card .text-success {
+    font-weight: 700;
+}
+
+/* Alertas de pagos - Columnas */
+.payment-section {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.payment-section.upcoming {
+    border-left: 3px solid #ffc107;
+}
+
+.payment-section.overdue {
+    border-left: 3px solid #dc3545;
+}
+
+.alerts-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.alerts-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.alerts-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.alerts-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.alerts-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.alert-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.alert-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(3px);
+}

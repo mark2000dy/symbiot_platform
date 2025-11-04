@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test API Auth - Symbiot</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 10px;
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: #7f8c8d;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 14px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .btn:hover {
+        background: #5568d3;
+      }
+
+      .btn-secondary {
+        background: #95a5a6;
+      }
+
+      .btn-secondary:hover {
+        background: #7f8c8d;
+      }
+
+      .btn-danger {
+        background: #e74c3c;
+      }
+
+      .btn-danger:hover {
+        background: #c0392b;
+      }
+
+      .result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      .result.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .result.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .info-box {
+        background: #e7f3ff;
+        border-left: 4px solid #2196f3;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+
+      .info-box h3 {
+        color: #1976d2;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .info-box ul {
+        margin-left: 20px;
+        color: #555;
+      }
+
+      .info-box li {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧪 Test API de Autenticación</h1>
+      <p class="subtitle">Prueba los endpoints de login, logout y user</p>
+
+      <div class="info-box">
+        <h3>📋 Usuarios de Prueba:</h3>
+        <ul>
+          <li><strong>Admin:</strong> admin@symbiot.com / admin123</li>
+          <li><strong>Manager:</strong> manager@symbiot.com / manager123</li>
+          <li><strong>User:</strong> user@symbiot.com / user123</li>
+        </ul>
+      </div>
+
+      <!-- Formulario de Login -->
+      <div class="form-group">
+        <label for="testUser">Usuario de prueba:</label>
+        <select
+          id="testUser"
+          title="Selecciona un usuario de prueba"
+          onchange="fillCredentials()"
+        >
+          <option value="">-- Selecciona un usuario --</option>
+          <option value="admin">Admin (admin@symbiot.com / admin123)</option>
+          <option value="manager">
+            Manager (manager@symbiot.com / manager123)
+          </option>
+          <option value="user">User (user@symbiot.com / user123)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="admin@symbiot.com" />
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" id="password" placeholder="admin123" />
+      </div>
+
+      <button class="btn" onclick="testLogin()">🔐 Test Login</button>
+      <button class="btn btn-secondary" onclick="testGetUser()">
+        👤 Test Get User
+      </button>
+      <button class="btn btn-danger" onclick="testLogout()">
+        🚪 Test Logout
+      </button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      const API_BASE = "/symbiot/finance_manager/api";
+
+      // Llenar credenciales automáticamente
+      function fillCredentials() {
+        const select = document.getElementById("testUser");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        const credentials = {
+          admin: { email: "admin@symbiot.com", password: "admin123" },
+          manager: { email: "manager@symbiot.com", password: "manager123" },
+          user: { email: "user@symbiot.com", password: "user123" },
+        };
+
+        const selected = credentials[select.value];
+        if (selected) {
+          email.value = selected.email;
+          password.value = selected.password;
+        }
+      }
+
+      // Test Login
+      async function testLogin() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+          showResult("Por favor ingresa email y contraseña", "error");
+          return;
+        }
+
+        try {
+          showResult("Enviando login...", "success");
+
+          const response = await fetch(`${API_BASE}/auth.php?action=login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showResult(
+              `✅ LOGIN EXITOSO\n\n${JSON.stringify(data, null, 2)}`,
+              "success"
+            );
+          } else {
+            showResult(`❌ ERROR\n\n${JSON.stringify(data, null, 2)}`, "error");
+          }
+        } catch (error) {
+          showResult(`❌ ERROR DE RED\n\n${error.message}`, "error");
+        }
+      }
+
+      // Test Get User
+      async function testGetUser() {
+        try {
+          showResult("Obteniendo usuario actual...", "success");
+
+          const response = await fetch(`${API_BASE}/auth.php?action=user`, {
+            method: "GET",
+            credentials: "same-origin",
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showResult(
+              `✅ USUARIO OBTENIDO\n\n${JSON.stringify(data, null, 2)}`,
+              "success"
+            );
+          } else {
+            showResult(`❌ ERROR\n\n${JSON.stringify(data, null, 2)}`, "error");
+          }
+        } catch (error) {
+          showResult(`❌ ERROR DE RED\n\n${error.message}`, "error");
+        }
+      }
+
+      // Test Logout
+      async function testLogout() {
+        try {
+          showResult("Cerrando sesión...", "success");
+
+          const response = await fetch(`${API_BASE}/auth.php?action=logout`, {
+            method: "POST",
+            credentials: "same-origin",
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showResult(
+              `✅ LOGOUT EXITOSO\n\n${JSON.stringify(data, null, 2)}`,
+              "success"
+            );
+          } else {
+            showResult(`❌ ERROR\n\n${JSON.stringify(data, null, 2)}`, "error");
+          }
+        } catch (error) {
+          showResult(`❌ ERROR DE RED\n\n${error.message}`, "error");
+        }
+      }
+
+      // Mostrar resultado
+      function showResult(message, type) {
+        const result = document.getElementById("result");
+        result.className = `result ${type}`;
+        result.textContent = message;
+      }
+    </script>
+  </body>
+</html>
