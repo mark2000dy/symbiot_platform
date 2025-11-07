@@ -212,7 +212,7 @@
 
             if (data.success) {
               // ✅ LOGIN EXITOSO
-              console.log("✅ Login exitoso para:", data.user.nombre);
+              console.log("✅ Login exitoso para:", data.data.user.nombre);
 
               // Guardar email si "recordarme" está activo
               if (document.getElementById("rememberMe").checked) {
@@ -223,7 +223,7 @@
               alertContainer.innerHTML = `
                         <div class="alert alert-success">
                             <i class="fas fa-check-circle me-2"></i>
-                            ¡Bienvenido ${data.user.nombre}! Redirigiendo...
+                            ¡Bienvenido ${data.data.user.nombre}! Redirigiendo...
                         </div>
                     `;
 
@@ -302,13 +302,14 @@
       // 🌐 Verificar conectividad con el servidor
       window.addEventListener("load", async function () {
         try {
-          const healthResponse = await fetch("/gastos/api/health");
+          const healthResponse = await fetch("/symbiot/finance_manager/api/auth.php?action=user");
           const healthData = await healthResponse.json();
 
-          if (healthData.status === "OK") {
-            console.log("✅ Servidor conectado:", healthData);
-          } else {
+          // No mostrar error si el usuario simplemente no está autenticado
+          if (healthData.success === false && healthData.error !== 'No hay sesión activa') {
             console.warn("⚠️ Problemas con el servidor:", healthData);
+          } else {
+            console.log("✅ Servidor conectado");
           }
         } catch (error) {
           console.error("❌ No se puede conectar con el servidor:", error);
